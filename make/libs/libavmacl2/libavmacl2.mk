@@ -4,14 +4,12 @@ $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
 $(PKG)_SOURCE_MD5:=1130eaa9a0d0f7d7c5de87657aa98bb1
 $(PKG)_SITE:=http://freetz.magenbrot.net
 
-$(PKG)_BUILD_PREREQ += autoreconf
-
 $(PKG)_BINARY:=$($(PKG)_DIR)/.libs/libavmacl2.so.$($(PKG)_LIB_VERSION)
 $(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libavmacl2.so.$($(PKG)_LIB_VERSION)
 $(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/libavmacl2.so.$($(PKG)_LIB_VERSION)
 
 $(PKG)_CONFIGURE_PRE_CMDS += touch AUTHORS ChangeLog COPYING NEWS README;
-$(PKG)_CONFIGURE_PRE_CMDS += autoreconf -f -i;
+$(PKG)_CONFIGURE_PRE_CMDS += $(AUTORECONF)
 $(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_PREVENT_RPATH_HARDCODING,./configure)
 
 $(PKG_SOURCE_DOWNLOAD)

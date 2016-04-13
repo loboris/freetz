@@ -11,14 +11,12 @@ $(PKG)_BINARY_TARGET := $($(PKG)_DEST_DIR)$(ASTERISK_MODULES_DIR)/chan_sccp.so
 $(PKG)_CONFIG := $($(PKG)_DIR)/conf/sccp.conf
 $(PKG)_CONFIG_TARGET := $($(PKG)_DEST_DIR)$(ASTERISK_CONFIG_DIR)/sccp.conf
 
-$(PKG)_BUILD_PREREQ += autoreconf
-
 $(PKG)_DEPENDS_ON += asterisk
 
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_ASTERISK_LOWMEMORY
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_ASTERISK_DEBUG
 
-$(PKG)_CONFIGURE_PRE_CMDS += autoreconf -f -i;
+$(PKG)_CONFIGURE_PRE_CMDS += $(AUTORECONF)
 # add EXTRA_(C|LD)FLAGS
 $(PKG)_CONFIGURE_PRE_CMDS += find $(abspath $($(PKG)_DIR)) -name Makefile.in -type f -exec $(SED) -i -r -e 's,^(C|LD)FLAGS[ \t]*=[ \t]*@\1FLAGS@,& $$$$(EXTRA_\1FLAGS),' \{\} \+;
 

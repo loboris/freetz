@@ -4,8 +4,6 @@ $(PKG)_SOURCE:=$(pkg)_$($(PKG)_VERSION).tar.gz
 $(PKG)_SITE:=http://ftp.de.debian.org/debian/pool/main/s/scanbuttond
 $(PKG)_SOURCE_MD5:=a117534dab22c2a7a9a1e5a64b2b0c25
 
-$(PKG)_BUILD_PREREQ += autoreconf
-
 $(PKG)_INSTALL_SUBDIR:=_install
 
 $(PKG)_BACKENDS_ALL       := artec_eplus48u epson genesys gt68xx hp3500 hp3900 hp5590 meta mustek niash plustek plustek_umax snapscan
@@ -15,8 +13,8 @@ $(PKG)_BINARY_BUILD_DIR   := $($(PKG)_DIR)/$($(PKG)_INSTALL_SUBDIR)/usr/bin/scan
 $(PKG)_BINARY_TARGET_DIR  := $($(PKG)_DEST_DIR)/usr/bin/scanbuttond
 
 $(PKG)_LIBS               := $($(PKG)_BACKENDS:%=libscanbtnd-backend_%.so.$($(PKG)_LIB_VERSION)) libscanbtnd-interface_usb.so.$($(PKG)_LIB_VERSION)
-$(PKG)_LIBS_BUILD_DIR     := $($(PKG)_LIBS:%=$($(PKG)_DIR)/$($(PKG)_INSTALL_SUBDIR)$(FREETZ_LIBRARY_PATH)/%)
-$(PKG)_LIBS_TARGET_DIR    := $($(PKG)_LIBS:%=$($(PKG)_DEST_DIR)$(FREETZ_LIBRARY_PATH)/%)
+$(PKG)_LIBS_BUILD_DIR     := $($(PKG)_LIBS:%=$($(PKG)_DIR)/$($(PKG)_INSTALL_SUBDIR)$(FREETZ_LIBRARY_DIR)/%)
+$(PKG)_LIBS_TARGET_DIR    := $($(PKG)_LIBS:%=$($(PKG)_DEST_DIR)$(FREETZ_LIBRARY_DIR)/%)
 
 $(PKG)_SCRIPTS            := buttonpressed.sh.example initscanner.sh.example
 $(PKG)_SCRIPTS_BUILD_DIR  := $($(PKG)_SCRIPTS:%=$($(PKG)_DIR)/$($(PKG)_INSTALL_SUBDIR)/mod/etc/scanbuttond/%)
@@ -31,11 +29,11 @@ $(PKG)_REBUILD_SUBOPTS += $(LIBUSB_REBUILD_SUBOPTS)
 
 $(PKG)_DEPENDS_ON += libusb
 
-$(PKG)_CONFIGURE_PRE_CMDS += autoreconf -f -i;
+$(PKG)_CONFIGURE_PRE_CMDS += $(AUTORECONF)
 $(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_PREVENT_RPATH_HARDCODING,./configure)
 
-$(PKG)_CONFIGURE_OPTIONS += --libdir=$(FREETZ_LIBRARY_PATH)
-$(PKG)_CONFIGURE_OPTIONS += --libexecdir=$(FREETZ_LIBRARY_PATH)
+$(PKG)_CONFIGURE_OPTIONS += --libdir=$(FREETZ_LIBRARY_DIR)
+$(PKG)_CONFIGURE_OPTIONS += --libexecdir=$(FREETZ_LIBRARY_DIR)
 $(PKG)_CONFIGURE_OPTIONS += --sysconfdir=/mod/etc
 
 $(PKG_SOURCE_DOWNLOAD)
@@ -58,7 +56,7 @@ $($(PKG)_BINARY_BUILD_DIR) $($(PKG)_LIBS_BUILD_DIR) $($(PKG)_SCRIPTS_BUILD_DIR):
 $($(PKG)_BINARY_TARGET_DIR): $($(PKG)_BINARY_BUILD_DIR)
 	$(INSTALL_BINARY_STRIP)
 
-$($(PKG)_LIBS_TARGET_DIR): $($(PKG)_DEST_DIR)$(FREETZ_LIBRARY_PATH)/%: $($(PKG)_DIR)/$($(PKG)_INSTALL_SUBDIR)$(FREETZ_LIBRARY_PATH)/%
+$($(PKG)_LIBS_TARGET_DIR): $($(PKG)_DEST_DIR)$(FREETZ_LIBRARY_DIR)/%: $($(PKG)_DIR)/$($(PKG)_INSTALL_SUBDIR)$(FREETZ_LIBRARY_DIR)/%
 	$(INSTALL_LIBRARY_STRIP)
 
 $($(PKG)_SCRIPTS_TARGET_DIR): $($(PKG)_DEST_DIR)/etc/default.scanbuttond/%: $($(PKG)_DIR)/$($(PKG)_INSTALL_SUBDIR)/mod/etc/scanbuttond/%
@@ -82,7 +80,7 @@ $(pkg)-clean:
 $(pkg)-uninstall:
 	$(RM) -r \
 		$(SCANBUTTOND_BINARY_TARGET_DIR) \
-		$(SCANBUTTOND_DEST_DIR)$(FREETZ_LIBRARY_PATH)/libscanbtnd* \
+		$(SCANBUTTOND_DEST_DIR)$(FREETZ_LIBRARY_DIR)/libscanbtnd* \
 		$(SCANBUTTOND_SCRIPTS_TARGET_DIR) \
 		$(SCANBUTTOND_META_TARGET_DIR)
 

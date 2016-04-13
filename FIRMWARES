@@ -57,7 +57,8 @@ Currently supported boxes and firmwares
 
 * Fritz!Box WLAN 3490
 	* 140.06.31 rev31064
-	* 140.06.30 rev31156 (International)
+	* 140.06.51 rev32657
+	* 140.06.31 rev32500 (International & International/Belgian)
 
 ====== Fritz!Box WAN (4xxx) ======
 
@@ -87,6 +88,8 @@ Currently supported boxes and firmwares
 * Fritz!Box 6810 LTE (EXPERIMENTAL)
 	* 108.06.30 rev31187
 	* 108.06.30 rev31224 (International)
+* Fritz!Box 6820 LTE (EXPERIMENTAL)
+	* 142.06.50 rev32591 (International)
 * Fritz!Box 6840 LTE
 	* 105.05.27 rev23567
 	* 105.05.56 rev26102
@@ -198,15 +201,16 @@ Currently supported boxes and firmwares
 	* 111.05.24 rev22845 (International)
 	* 111.05.51 rev25025 (International)
 	* 111.06.05 rev27964 (International)
-	* 111.06.30 rev31156 (International & International/Belgian)
+	* 111.06.31 rev32500 (International & International/Belgian)
 	* 111.06.06 rev28155 (International/Belgian)
 * Fritz!Box Fon WLAN 7360 v2
 	* 124.05.22 rev22574
 	* 124.05.50 rev24690
 	* 124.06.03 rev27380
 	* 124.06.30 rev30889
+	* 124.06.50 rev32505
 	* 124.06.05 rev27964 (International)
-	* 124.06.30 rev31156 (International & International/Belgian)
+	* 124.06.31 rev32500 (International & International/Belgian)
 	* 124.06.06 rev28155 (International/Belgian)
 * Fritz!Box Fon WLAN 7360 SL
 	* 109.05.22 rev22574
@@ -219,6 +223,7 @@ Currently supported boxes and firmwares
 	* 131.05.53 rev26448
 	* 131.06.03 rev27365
 	* 131.06.30 rev30889
+	* 131.06.50 rev32505
 * Fritz!Box Fon WLAN 7369 (EXPERIMENTAL)
 	* 119.06.31 rev32140 (International)
 * Fritz!Box Fon WLAN 7390
@@ -226,7 +231,7 @@ Currently supported boxes and firmwares
 	* 84.05.54 rev27574
 	* 84.06.04 rev28179
 	* 84.06.30 rev30889
-	* 84.06.36 rev32422 (Labor)
+	* 84.06.36 rev32564 (Labor)
 	* 84.05.52 rev27393 (EWE Edition)
 	* 84.06.03 rev27412 (EWE Edition)
 	* 84.05.23 rev27631 (International)
@@ -238,6 +243,7 @@ Currently supported boxes and firmwares
 
 * Fritz!Box Fon WLAN 7412 (EXPERIMENTAL)
 	* 137.06.30 rev30889
+	* 137.06.50 rev32502
 
 * Fritz!Box Fon WLAN 7430 (EXPERIMENTAL)
 	* 146.06.30 rev32200
@@ -248,8 +254,9 @@ Currently supported boxes and firmwares
 	* 113.06.05 rev27580
 	* 113.06.30 rev30889
 	* 113.06.51 rev32358
+	* 113.06.55 rev32711 (Labor)
 	* 113.06.04 rev27507 (International)
-	* 113.06.30 rev31156 (International & International/Belgian)
+	* 113.06.31 rev32500 (International & International/Belgian)
 	* 113.06.06 rev28155 (International/Belgian)
 
 ====== Fritz!Box Fon WLAN (75xx) ======

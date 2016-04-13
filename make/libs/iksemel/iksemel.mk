@@ -9,8 +9,6 @@ $(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/lib$(pkg).so.$($(PKG)_LIB_VERSION)
 
 $(PKG)_DEPENDS_ON += openssl
 
-$(PKG)_BUILD_PREREQ += autoreconf
-
 $(PKG)_REBUILD_SUBOPTS += FREETZ_OPENSSL_SHLIB_VERSION
 
 $(PKG)_CONFIGURE_OPTIONS += --enable-shared
@@ -18,7 +16,7 @@ $(PKG)_CONFIGURE_OPTIONS += --enable-static
 $(PKG)_CONFIGURE_OPTIONS += --without-gnutls
 $(PKG)_CONFIGURE_OPTIONS += --disable-python
 
-$(PKG)_CONFIGURE_PRE_CMDS += autoreconf -f -i;
+$(PKG)_CONFIGURE_PRE_CMDS += $(AUTORECONF)
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
